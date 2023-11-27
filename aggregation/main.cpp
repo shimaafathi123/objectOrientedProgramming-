@@ -11,25 +11,30 @@ public:
 };//end point class
 
 class Line {
-    Point *startP, *endP;
+    Point *ptr1, *ptr2;
 
 public:
-    Line(Point *sp, Point *ep) : startP(sp), endP(ep) {}
+    Line(Point *sp, Point *ep)  {
+            ptr1=sp;
+            ptr2=ep;
+    }
 
     void draw() const {
-        line(startP->getX(), startP->getY(), endP->getX(), endP->getY());
+        line(ptr1->getX(), ptr1->getY(), ptr2->getX(), ptr2->getY());
     }
 }; //end line class
 
 class Circle {
-    Point *center;
+    Point *ptr;
     int radius;
 
 public:
-    Circle(Point *c, int r) : center(c), radius(r) {}
+    Circle(Point *c, int r) :radius(r) {
+        ptr=c;
+    }
 
     void draw() const {
-        circle(center->getX(), center->getY(), radius);
+        circle(ptr->getX(), ptr->getY(), radius);
     }
 };//end circle class
 int main() {
