@@ -11,25 +11,23 @@ public:
 };//end point class
 
 class Line {
-    Point &startP, &endP;
 
 public:
-    Line(Point &sp, Point &ep) : startP(sp), endP(ep) {}
 
-    void draw() const {
-        line(startP.getX(), startP.getY(), endP.getX(), endP.getY());
+    void draw(Point sp, Point ep) const {
+        line(sp.getX(), sp.getY(), ep.getX(), ep.getY());
     }
 }; //end line class
 
 class Circle {
-    Point &center;
     int radius;
 
 public:
-    Circle(Point &c, int r) : center(c), radius(r) {}
-
-    void draw() const {
-        circle(center.getX(), center.getY(), radius);
+    Circle(int r){
+        radius=r;
+    }
+    void draw(Point c) const {
+        circle(c.getX(), c.getY(), radius);
     }
 };//end circle class
 int main() {
@@ -38,17 +36,16 @@ int main() {
     //line
     Point startPoint(100, 100);
     Point endPoint(300, 100);
+    Line myLine;
 
-    Line myLine(startPoint, endPoint);
-
-    myLine.draw();
+    myLine.draw(startPoint,endPoint);
     //circle
     Point centerPoint(200, 200);
     int radius = 50;
 
-    Circle myCircle(centerPoint, radius);
+    Circle myCircle(70);
 
-    myCircle.draw();
+    myCircle.draw(centerPoint);
     delay(5000); // Display the graphics for 5 seconds
 
     closegraph();
